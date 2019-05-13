@@ -13,14 +13,18 @@ def sample_models(n_models, n_vars):
 	# Generate matrix of zeros with ones along diagonals
 	binary_models = np.zeros((n_models, n_vars))
 
-	# Sample model indices
-	model_num = np.random.randint(2**n_vars, size=n_models)
-
-	strformat = '{0:0' + str(n_vars) + 'b}'
-	# Construct each binary model vector
 	for i in range(n_models):
-		model = strformat.format(model_num[i])
+		model = np.random.choice(2, n_vars)
 		binary_models[i,:] = np.array([int(b) for b in model])
+
+	# THIS DOES NOT WORK (throws error)
+	# model_num = np.random.randint(2**n_vars, size = n_models)
+
+	# strformat = '{0:0' + str(n_vars) + 'b}'
+	# # Construct each binary model vector
+	# for i in range(n_models):
+	# 	model = strformat.format(model_num[i])
+	# 	binary_models[i,:] = np.array([int(b) for b in model])
 
 	return binary_models
 

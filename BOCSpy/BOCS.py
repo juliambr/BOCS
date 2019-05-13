@@ -74,7 +74,7 @@ def BOCS(inputs, order, acquisitionFn):
 
 		# evaluate model objective at new evaluation point
 		x_new = x_new.reshape((1,n_vars))
-		y_new = model(x_new)
+		y_new = model(x_new[0])
 
 		# Update inputs dictionary
 		inputs['x_vals'] = np.vstack((inputs['x_vals'], x_new))

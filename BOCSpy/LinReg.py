@@ -21,7 +21,7 @@ class LinReg:
 
 		# limit data to unique points
 		X, x_idx = np.unique(self.xTrain, axis=0, return_index=True)
-		y = self.yTrain[x_idx]
+		y = [self.yTrain[i] for i in x_idx] 
 
 		# set upper threshold
 		infT = 1e6
@@ -32,10 +32,10 @@ class LinReg:
 
 		# save samples in two sets of variables
 		self.xInf = X[y_Infidx,:]
-		self.yInf = y[y_Infidx]
+		self.yInf = [y[i] for i in y_Infidx]
 
 		self.xTrain = X[y_nInfidx,:]
-		self.yTrain = y[y_nInfidx]
+		self.yTrain = [y[i] for i in y_nInfidx]
 
 	# ---------------------------------------------------------
 	# ---------------------------------------------------------
