@@ -72,6 +72,8 @@ def BOCS(inputs, order, acquisitionFn):
 		else:
 			raise NotImplementedError
 
+		print x_new
+
 		# evaluate model objective at new evaluation point
 		x_new = x_new.reshape((1,n_vars))
 		y_new = model(x_new[0])
@@ -183,7 +185,7 @@ def sdp_relaxation(alpha, inputs):
 	obj = cvx.Minimize(cvx.trace(cvx.matmul(At,X)))
 	constraints = [cvx.diag(X) == np.ones(n_vars+1)]
 	prob = cvx.Problem(obj, constraints)
-	prob.solve(solver=cvx.CVXOPT)
+	prob.solve(solver = cvx.CVXOPT)
 
 	# Extract vectors and compute Cholesky
 	# add small identity matrix is X.value is numerically not PSD
